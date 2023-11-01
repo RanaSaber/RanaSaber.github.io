@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<style>
+
+</style>
+<html lang="en">
+    <div>Fixed width columns</div>
+    <div style="display:grid; gap:10px; border: 1px solid black; grid-template-columns: 50px 50px 50px;">
+        <div style="background-color:aqua;">Col 1</div>
+        <div style="background-color: burlywood;">Col 2</div>
+        <div style="background-color: mediumaquamarine;">Col 3</div>
+    </div>
+
+    <div>Equal sized columns</div>
+    <div style="display:grid; gap:10px; border: 1px solid black; grid-template-columns: 1fr 1fr 1fr;">
+        <div style="background-color:aqua;">Col 1</div>
+        <div style="background-color: burlywood;">Col 2</div>
+        <div style="background-color: mediumaquamarine;">Col 3</div>
+    </div>
+
+    <div>Auto sized columns( size according to content)</div>
+    <div style="display:grid; gap:10px; border: 1px solid black; grid-template-columns:auto auto auto;">
+        <div style="background-color:aqua;">Col 1</div>
+        <div style="background-color: burlywood;">Col 2</div>
+        <div style="background-color: burlywood;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores eaque praesentium quasi aspernatur quisquam adipisci rem necessitatibus a ullam dicta nobis molestiae qui in esse, fugiat, vel libero ab inventore!</div>
+        <div style="background-color: burlywood;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi vel nisi repudiandae ad aut nulla aperiam, saepe reiciendis quos quasi eaque? Architecto eaque sint ullam pariatur dolore facere temporibus perferendis?</div>
+        <div style="background-color: mediumaquamarine;">Col 3</div>
+    </div>
+</html>
