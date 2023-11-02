@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<style>
+    .main {
+        background-color: black;
+        height: 500px;
+        width:95%;
+    }
+    .container {
+        padding: 50px 90px;
+        position: relative;
+        height: 350px;
+    }
+    .flex-container {
+        display:flex;
+        justify-content: space-between;
+    }
+    .footer {
+        position:absolute;
+        bottom: 0px;
+        left: 90px;
+        right: 90px;
+    }
+    .grid-container {
+        display: grid;
+        gap: 10px;
+    }
+    .fixed-size-image {
+        width: 50px;
+        float: left;
+    }
+</style>
+<html>
+    <div class="main">
+        <div class="container">
+            <div class="flex-container">
+                <div>
+                    <h3 style="color:white;">About Me</h3>
+                    <div class="grid-container">
+                        <div style="color:gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. In voluptatibus harum aliquam deleniti magni commodi, eligendi sequi molestiae. Saepe itaque laboriosam earum quas perspiciatis magni nihil ducimus ratione a atque.</div>
+                            <div>
+                                <img class="fixed-size-image" src="../images/image1.jpeg" />
+                                <div style="color:white; float:left">322323</div>
+                            </div>
+                            <div>
+                                <img class="fixed-size-image" src="../images/image1.jpeg" />
+                                <div style="color:white; float:left">email.com</div>
+                            </div>
+                        </div>
+                    </div>
+                
+                <div>
+                    <h3 style="color:white;">Latest Tweet</h3>
+                </div>
+                
+                <div>
+                    <h3 style="color:white;">Instagram</h3>
+                </div>
+            </div>
+
+            <div class="footer">
+                <hr>
+                <div style="display:flex; gap:20px">
+                    <div style="color:white;">Home</div>
+                    <div style="color:white;">About</div>
+                    <div style="color:white;">Our Works</div>
+                    <div style="color:white;">Services</div>
+                    <div style="color:white;">Blog</div>
+                    <div style="color:white;">Contacts</div>
+                    <div style="color:white; align-self:flex-end;">Colorlib</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
