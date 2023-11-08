@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function submitForm() {
+        let myDiv = $('#myDiv');
+
+        if (myDiv.length > 0) {
+            myDiv.html('');
+        } else {
+            myDiv = $('<div style="display:grid" id="myDiv"></div>')
+        }
+
+        let name = '<b>Name:</b> ' + $('#name').val();
+        let nameDiv = $('<div></div>')
+        nameDiv.html(name);
+
+        let gender = '<b>Gender:</b> ' + $('#gender').val();
+        let genderDiv = $('<div></div>')
+        genderDiv.html(gender);
+
+        let skills = '<b>Skills:</b> ';
+        let skillsDiv = $('<div></div>')
+        
+        for (let skill of $('#skill:checked')) {
+            skills = skills + $(skill).val() + ', '
+        }
+
+        if (skills.length > 8) {
+            skills = skills.substring(0, skills.length - 2);
+        }
+
+        skillsDiv.html(skills);
+
+        let country = '<b>Country:</b> ' + $('#country option:selected').val();
+        let countryDiv = $('<div></div>')
+        countryDiv.html(country);
+
+        let options = '<b>Random Options:</b> ';
+        let optionsDiv = $('<div></div>')
+        
+        for (let option of $('#random option:selected')) {
+            options = options + $(option).val() + ', '
+        }
+
+        if (options.length > 16) {
+            options = options.substring(0, options.length - 2);
+        }
+        
+        optionsDiv.html(options);
+
+        let description = "<b>Description:</b> " + $("#description").val();
+        let descriptionDiv = $('<div></div>');
+
+        descriptionDiv.html(description);
+
+        myDiv.append(nameDiv);
+        myDiv.append(genderDiv);
+        myDiv.append(skillsDiv);
+        myDiv.append(countryDiv);
+        myDiv.append(optionsDiv);
+        myDiv.append(descriptionDiv)
+        
+        $('body').append(myDiv);
+    }
+</script>
+
+<body>
+    <div style="display:grid; gap:20px">
+        <div style="display:flex; justify-content:left;">
+            <div style="width:20%">Name</div>
+            <input style="width:100%;" id="name"/>
+        </div>
+        <div style="display:flex;">
+            <div style="width:20%">Gender</div>
+            <div>
+                <input type="radio" id="gender" value="Male" name="gender"/>Male
+                <input type="radio" id="gender" value="Female" name="gender"/>Female
+            </div>
+        </div>
+        <div style="display:flex;">
+            <div style="width:20%">Skills</div>
+            <div>
+                <input type="checkbox" id="skill" value="Java"/>Java
+                <input type="checkbox" id="skill" value="Javascript"/>Javascript
+            </div>
+        </div>
+        <div style="display:flex; justify-content:left;">
+            <div style="width:20%">Country</div>
+            <select id="country" style="width:100%; background-color:lightgray;">
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+            </select>
+        </div>
+        <div style="display:flex;">
+            <div style="width:20%">Random Options</div>
+            <select id="random" style="width:100%;" multiple>
+                <option value="Option 1">Option 1</option>
+                <option value="Option 2">Option 2</option>
+            </select>
+        </div>
+        <div style="display:flex;">
+            <div style="width:20%">Description</div>
+            <textarea id="description" style="width:100%;"></textarea>
+        </div>
+        <button style="width:80px;" onclick="submitForm()">Submit</button>
+    </div>
+    <div style="border: 1px solid black; margin: 20px 0px;"></div>
+    <h5>Selected Values</h5>
+    <div style="border: 1px solid black; margin: 20px 0px;"></div>
+</body>
+</html>

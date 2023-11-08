@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    th, td {
+        width: 20%;
+        text-align: center;
+    }
+    tr {
+        height: 50px;
+    }
+    tr:nth-child(even) {
+        background-color: lightgray;
+    }
+</style>
+<script>
+    let i = 0;
+
+    function deleteItem(id) {
+        $(id).remove();
+    }
+
+    function addItem() {
+        i++;
+        let id = "row" + i;
+        let name = $("#name").val();
+        let price = $("#price").val();
+        let quantity = $("#quantity").val();
+
+        let newRow = $('<tr id="' + id + '"></tr>');
+        newRow.append($('<td>' + name + '</td>'));
+        newRow.append($('<td>' + price + '</td>'));
+        newRow.append($('<td>' + quantity + '</td>'));
+        newRow.append($('<td><button>Edit</button></td>'));
+        newRow.append($('<td><button onclick="deleteItem(' + id +')">Delete</button></td>'));
+
+        $("#tableView").append(newRow);
+    }
+</script>
+<body>
+    <div>
+        <label>Name:</label>
+        <input id="name"/>
+        <label>Price:</label>
+        <input id="price" />
+        <label>Quantity:</label>
+        <input id="quantity" />
+        <button onclick="addItem()">Add</button>
+    </div>
+
+    <table id="tableView" style="width:100%; border:1px solid lightgray;">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </table>
+    <!-- <div id="gridDiv" style="display:grid; border:1px solid lightgray;">
+        <div style="display:flex; justify-content:space-evenly; align-items:center; height:50px;">
+            <div><strong>Name</strong></div>
+            <div><strong>Price</strong></div>
+            <div><strong>Quantity</strong></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div> -->
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table {
+        width:100%;
+        border: 1px double blue;
+        border-collapse: collapse;
+    }
+    tr {
+        width: 50%;
+        height: 50px;
+        text-align:left;
+    }
+
+    tr:nth-child(even) {
+        background-color: lightgray;
+    }
+</style>
+<script>
+    function listToTable() {
+        let l = $('ul li');
+        let t = $('<table></table>');
+
+        for (let item of l) {
+            console.log(item.textContent);
+            let v = item.textContent.split(" - ");
+            let r = '<tr><td>' + v[0] + '</td><td>' + v[1] + '</td></tr>';
+            t.append($(r));
+        }
+
+        $('ul').replaceWith(t);
+    }
+</script>
+<body>
+    <ul>
+        <li>Rose - Red</li>
+        <li>Chamoline - Yellow</li>
+        <li>lily - white</li>
+    </ul>
+    <button onclick="listToTable()">List to Table</button>
+</body>
+</html>

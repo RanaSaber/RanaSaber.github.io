@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function change(ele, newEle) {
+        ele.replaceWith('<label>' + newEle + '</label>');
+    }
+
+    function readForm() {
+        let name = $("#name");
+        change(name, name.val());
+
+        let description = $("#description")
+        change(description, description.val());
+
+        let country = $("#country");
+        change(country, $("#country option:selected").val())
+
+        let address = $('#address');
+        let addressDiv = $("#address option:selected");
+        let addressText = '';
+        for (let i=0; i<addressDiv.length; i++) {
+            if (i == addressDiv.length-1)
+                addressText = addressText + $(addressDiv[i]).val();
+            else
+                addressText = addressText + $(addressDiv[i]).val() + ', ';
+        }
+        change(address, addressText);
+
+        let gender = $("#genderDiv");
+        change(gender, $("#gender:checked").val())
+
+        let skills = $("#skillsDiv");
+        let skillsDiv = $("#skills:checked");
+        let skillsText = ''
+        for (let i=0; i<skillsDiv.length; i++) {
+            if (i == skillsDiv.length-1)
+                skillsText = skillsText + $(skillsDiv[i]).val();
+            else
+                skillsText = skillsText + $(skillsDiv[i]).val() + ', ';
+        }
+        change(skills, skillsText);
+    }
+</script>
+<body>
+    <div id="formDiv" style="display:grid; gap:10px">
+        <div>
+            <label>Name</label>
+            <input id="name"/>
+        </div>
+
+        <div>
+            <label>Description</label>
+            <textarea id="description">Description</textarea>
+        </div>
+
+        <div>
+            <label>Country</label>
+            <select style="background-color:lightgray; border-radius:5px;" id="country">
+                <option>USA</option>
+                <option>Canada</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Address</label>
+            <select id="address" multiple>
+                <option>Home</option>
+                <option>Work</option>
+                <option>Office</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Gender</label>
+            <div id="genderDiv">
+                <input type="radio" id="gender" value="Male" name="gender"/>Male
+                <input type="radio" id="gender" value="Female" name="gender"/>Female
+            </div>
+        </div>
+
+        <div>
+            <label>Skills</label>
+            <div id="skillsDiv">
+                <input type="checkbox" id="skills" value="Java" />Java
+                <input type="checkbox" id="skills" value="Javascript" />Javascript
+            </div>
+        </div>
+    </div>
+    <button style="width:70px" onclick="readForm()">Submit</button>
+</body>
+</html>

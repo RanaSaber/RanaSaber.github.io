@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function changeStyle() {
+        if ($("#theme option:selected").val() == "Dark") {
+            $("#p1").css({'background-color':'black', 'color':'white'});
+        }
+        else {
+            $("#p1").css({'background-color':'yellow', 'color':'red'});
+        }
+    }
+
+    function changeTextDisplay() {
+        console.log($("#p2").css('display'));
+        if ($("#p2").css('display') == 'none') {
+            $("#p2").css({'display': 'block'});
+        }
+        else {
+            $("#p2").css({'display': 'none'});
+        }
+    }
+
+    function changeBoxDisplay() {
+        if ($("#input1").css('visibility') == 'visible') {
+            $("#input1").css({'visibility': 'hidden'});
+        }
+        else {
+            $("#input1").css({'visibility': 'visible'});
+        }
+    }
+
+    function showBoxes() {
+        let select = $("#select1 option:selected").val();
+        let boxesDiv = $('<div id="boxesDiv"></div>')
+        if (select == "Vedas") {
+            boxesDiv.html('<input type="checkbox">Rig<input type="checkbox">Yajur<input type="checkbox">Adarvana<input type="checkbox">Sama')
+        }
+        else {
+            boxesDiv.html('<input type="checkbox">Aiterya<input type="checkbox">Brihadarankya<input type="checkbox">Chandogya<input type="checkbox">Mandukya')
+        }
+
+        $('#addHere').html(boxesDiv);
+    }
+
+    function removeBoxes() {
+        $("#boxesDiv").css('display', 'none')
+    }
+</script>
+<body>
+    <select id="theme" style="background-color:rgb(235, 233, 233); border-radius:5px; width:60px;">
+        <option>Dark</option>
+        <option>Light</option>
+    </select>
+    <p id="p1">Bananas are yellow in color</p>
+    <button onclick="changeStyle()">Submit</button>
+
+    <hr>
+
+    <div>Display</div>
+    <p id="p2" style="display:none">Bananas are yellow in color</p>
+    <button onclick="changeTextDisplay()">Submit</button>
+    <div>Visibility</div>
+    <input id="input1" style="visibility:visible;">
+    <button onclick="changeBoxDisplay()">Submit</button>
+
+    <hr>
+
+    <label>Scriptures</label>
+    <select id="select1">
+        <option>Vedas</option>
+        <option>Upanishads</option>
+    </select>
+    <button onclick="showBoxes()">Show</button>
+    <div id="addHere"></div>
+    <div id="line" style="border:1px solid black; margin:10px 0px;"></div>
+    <button onclick="removeBoxes()">Submit</button>
+</body>
+</html>

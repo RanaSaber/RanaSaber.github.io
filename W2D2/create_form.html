@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function readForm() {
+        let myDiv = $('#myDiv');
+
+        if (myDiv.length > 0) {
+            myDiv.html('');
+        } else {
+            myDiv = $('<div id="myDiv"></div>')
+        }
+
+        let name = '<div>Name: ' + $("#name").val() + '</div>';
+        myDiv.append(name);
+
+        let description = '<div>Description: ' + $("#description").val() + '</div>'
+        myDiv.append(description);
+
+        let country = '<div>Country: ' + $("#country option:selected").val() + '</div>'
+        myDiv.append(country);
+
+        let address = '<div>Address: ';
+        let addressDiv = $("#address option:selected");
+        for (let i=0; i<addressDiv.length; i++) {
+            if (i == addressDiv.length-1)
+                address = address + $(addressDiv[i]).val();
+            else
+                address = address + $(addressDiv[i]).val() + ', ';
+        }
+        address = address + '</div>';
+        myDiv.append(address);
+
+        let gender = '<div>Gender: ' + $("#gender:checked").val() + '</div>';
+        myDiv.append(gender);
+
+        let skills = '<div>Skills: ';
+        let skillsDiv = $("#skills:checked");
+        for (let i=0; i<skillsDiv.length; i++) {
+            if (i == skillsDiv.length-1)
+                skills = skills + $(skillsDiv[i]).val();
+            else
+                skills = skills + $(skillsDiv[i]).val() + ', ';
+        }
+        myDiv.append(skills);
+
+        $('body').append(myDiv);
+    }
+</script>
+<body>
+    <div style="display:grid; gap:10px">
+        <div>
+            <label>Name</label>
+            <input id="name"/>
+        </div>
+
+        <div>
+            <label>Description</label>
+            <textarea id="description">Description</textarea>
+        </div>
+
+        <div>
+            <label>Country</label>
+            <select style="background-color:lightgray; border-radius:5px;" id="country">
+                <option>USA</option>
+                <option>Canada</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Address</label>
+            <select id="address" multiple>
+                <option>Home</option>
+                <option>Work</option>
+                <option>Office</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Gender</label>
+            <input type="radio" id="gender" value="Male" name="gender"/>Male
+            <input type="radio" id="gender" value="Female" name="gender"/>Female
+        </div>
+
+        <div>
+            <label>Skills</label>
+            <input type="checkbox" id="skills" value="Java" />Java
+            <input type="checkbox" id="skills" value="Javascript" />Javascript
+        </div>
+
+        <button style="width:70px" onclick="readForm()">Submit</button>
+    </div>
+</body>
+</html>

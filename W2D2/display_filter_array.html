@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let array = ['Rose', 'Lily', 'Jinnia']
+
+    function buildArray() {
+        let myDiv = $("#mydiv");
+        let mySelect = $("#mySelect");
+
+        if (mySelect.length > 0) {
+            mySelect.html('');
+        }
+        else {
+            mySelect = $('<select id="mySelect"></select>');
+            $('#myDiv').append(mySelect);
+        }
+
+        let options = '';
+
+        for (let item of array) {
+            options += '<option>' + item + '</option>';
+        }
+
+        mySelect.html(options);
+    }
+
+    function filterArray() {
+        array = array.filter(function(v, i, array) {
+            return v == "Jinnia";
+        })
+
+        buildArray();
+    }
+
+    $('document').ready(function () {
+        buildArray();
+    })
+</script>
+<body>
+    <div id="myDiv">
+        <button onclick="filterArray()">Filter</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let array1 = ['Rose', 'Lily', 'Daffod'];
+    let array2 = [];
+
+    function buildSelects() {
+        let select1 = $("#select1");
+        let select2 = $("#select2");
+        let options1 = '';
+        let options2 = '';
+
+        for (let item of array1) {
+            options1 += '<option>' + item + '</option>';
+        }
+
+        for (let item of array2) {
+            options2 += '<option>' + item + '</option>';
+        }
+
+        select1.html(options1);
+        select2.html(options2);
+    }
+
+    function moveSelectedToDest() {
+        let selected = $('#select1 option:selected');
+        let array3 = [];
+
+        for(let item of selected) {
+            array2.push($(item).val());
+        }
+
+        for (let item of array1) {
+            if (! array2.includes(item)) {
+                array3.push(item);
+            }
+        }
+
+        array1 = array3;
+
+        buildSelects();
+    }
+
+    function moveAllToDest() {
+        let selected = $('#select1 option');
+
+        for(let item of selected) {
+            array2.push($(item).val());
+        }
+
+        array1 = [];
+
+        buildSelects();
+    }
+
+    function moveSelectedToSource() {
+        let selected = $('#select2 option:selected');
+        let array3 = [];
+
+        for(let item of selected) {
+            array1.push($(item).val());
+        }
+
+        for (let item of array2) {
+            if (! array1.includes(item)) {
+                array3.push(item);
+            }
+        }
+
+        array2 = array3;
+
+        buildSelects();
+    }
+
+    function moveAllToSource() {
+        let selected = $('#select2 option');
+
+        for(let item of selected) {
+            array1.push($(item).val());
+        }
+
+        array2 = [];
+
+        buildSelects();
+    }
+
+    $('document').ready(function() {
+        buildSelects();
+    })
+
+</script>
+<body>
+    <div style="display:flex;justify-content:space-evenly;">
+        <select id="select1" style="width:70px" multiple></select>
+        <div style="display:grid;">
+            <button onclick="moveSelectedToDest()">></button>
+            <button onclick="moveAllToDest()">>></button>
+            <button onclick="moveSelectedToSource()"><</button>
+            <button onclick="moveAllToSource()"><<</button>
+        </div>
+        <select id="select2" style="width:70px" multiple></select>
+    </div>
+</body>
+</html>

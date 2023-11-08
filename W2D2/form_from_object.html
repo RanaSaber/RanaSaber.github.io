@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let obj = {Name:"Rana", Age:27, Skills:["Java", "Javascript"], Position:{list:['Tester', 'Developer', 'Analyst'], selected:'Developer'}};
+    // let obj = {Name:"Muhammad", Age:28, Skills:["Java", ".Net"], Position:{list:['Tester', 'Developer', 'Analyst'], selected:'Developer'}};
+    // let obj = {Name:"Hanan", Age:27, Skills:["Python"], Position:{list:['Tester', 'Developer', 'Analyst'], selected:'Analyst'}};
+    
+    function createInput(name, value) {
+        let lb = '<label style="margin-right:10px">' + name + '</label>';
+        let v = '<input value=' + value + ' />';
+        let d = '<div style="margin-bottom:10px">' + lb + v + '</div>'
+        
+        return d;
+    }
+
+    function createCheckboxes(name, list) {
+        let lb = '<label style="margin-right:10px">' + name + '</label>';
+        let options = '';
+        
+        for (let item of list) {
+            options += '<input type="checkbox" name="' + name + '" id="' + name + '" checked />' + item;
+        }
+
+        let d = '<div style="margin-bottom:10px">' + lb + options + '</div>'
+        
+        return d;
+    }
+
+    function createList(name, list, selected) {
+        let lb = '<label style="margin-right:10px">' + name + '</label>';
+        let options = '';
+        
+        for (let item of list) {
+            if (item == selected) {
+                options += '<option selected>' + item + '</option>';
+            }
+            else {
+                options += '<option>' + item + '</option>';
+            }
+        }
+
+        let s = '<select style="margin-bottom:10px">' + lb + options + '</select>'
+        
+        return s;
+    }
+
+    $('document').ready(function() {
+        let formDiv = $('#formDiv');
+        let newItem = '';
+
+        for (item in obj) { 
+            if (Array.isArray(obj[item])) {
+                newItem = createCheckboxes(item, obj[item]);
+            }
+            else if (typeof(obj[item]) == "object"){
+                newItem = createList(item, obj[item].list, obj[item].selected)
+            }
+            else {
+                newItem = createInput(item, obj[item]);
+            }
+
+            formDiv.append($(newItem));
+        }
+    })
+</script>
+<body>
+    <div id="formDiv"></div>
+</body>
+</html>

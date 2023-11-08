@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<head>
+    <script>
+        function addHtml() {
+            let sec = $('<header><section>Selection</section><header>')
+            // $('body').append(sec)
+            $('button').after(sec)
+            
+            let p =$('<p>My Paragraph</p>')
+            $('button').before(p)
+        }
+    </script>
+</head>
+<body>
+    <button onclick="addHtml()"> My Button</button>
+</body>
+</html>

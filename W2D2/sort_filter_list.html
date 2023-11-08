@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let list = ['apple', 'pear', 'grapes'];
+
+    function buildUL() {
+        let myDiv = $('#myDiv');
+
+        if (myDiv.length > 0) {
+            myDiv.html('');
+        }
+        else {
+            myDiv = $('<div id="myDiv"></div>')
+            $('body').append(myDiv);
+        }
+
+        let html = '';
+        
+        for (let item of list) {
+            html += '<li>' + item + '</li>';
+        }
+
+        let myList = $('<ul></ul>');
+        myList.html(html);
+
+        $('#myDiv').append(myList);
+    }
+
+    function sortList() {
+        list = list.sort();
+        console.log(list);
+
+        buildUL();
+    }
+
+    function filterList() {
+        list = list.filter(function(v, i, array) {
+            return v.startsWith('a');
+        })
+
+        buildUL();
+    }
+
+    $('document').ready(function() {
+        buildUL();
+    })
+</script>
+<body>
+    <button onclick="sortList()">Sort</button>
+    <button onclick="filterList()">Filter</button>
+</body>
+
+</html>
