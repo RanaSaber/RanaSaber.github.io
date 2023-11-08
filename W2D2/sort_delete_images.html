@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img {
+        width: 100px;
+        height: 100px;
+    }
+</style>
+<script>
+    let list = [{ id: 2, fname: 'John', lname: 'Doe', img: '../images/image1.jpeg' },
+        { id: 4, fname: 'Maharishi', lname: 'Mahesh', img: '../images/image2.jpeg' },
+        { id: 3, fname: 'Arya', lname: 'Batt', img: '../images/image3.jpeg' },
+        { id: 1, fname: 'Aakash', lname: 'Chatterji', img: '../images/image4.jpeg' }];
+
+    let usedList = [{ id: 2, fname: 'John', lname: 'Doe', img: '../images/image1.jpeg' },
+        { id: 4, fname: 'Maharishi', lname: 'Mahesh', img: '../images/image2.jpeg' },
+        { id: 3, fname: 'Arya', lname: 'Batt', img: '../images/image3.jpeg' },
+        { id: 1, fname: 'Aakash', lname: 'Chatterji', img: '../images/image4.jpeg' }];
+
+    let sortBy = 'firstName';
+
+    function buildPage() {
+        let myDiv = $("#showHere");
+        let html = '';
+
+        for(let obj of usedList) {
+            html += '<div style="display:flex; justify-content: left; gap:10px;">' +
+                '<img src="' + obj.img + '" /><div>' +
+                    '<div style="margin-bottom:20px">' + obj.fname + '</div>' +
+                    '<div style="margin-bottom:20px">' + obj.lname + '</div>' +
+                    '<button onclick="deleteItem(' + obj.id + ')">Delete</button></div></div>';
+        }
+
+        myDiv.html(html);
+    }
+
+    function deleteItem(id) {
+        let newList = [];
+
+        for (let obj of usedList) {
+            if (!(obj.id == id)) {
+                newList.push(obj);
+            }
+        }
+
+        usedList = newList;
+
+        buildPage();
+    }
+
+    function sortItems() {
+        usedList = [];
+
+        for (let obj of list) {
+            usedList.push(obj);
+        }
+
+        if (sortBy == 'firstName') {
+            usedList = usedList.sort(function(a, b) {
+                return a.fname.localeCompare(b.fname);
+            });
+
+            sortBy = 'byID';
+        }
+        else {
+            usedList = usedList.sort(function(a, b) {
+                return b.id - a.id;
+            });
+
+            sortBy = 'firstName';
+        }
+
+        buildPage();
+    }
+
+    $('document').ready(function() {
+        buildPage();
+    })
+</script>
+<body>
+    <button onclick="sortItems()">Sort</button>
+    <div id="showHere" style="display:flex; justify-content: left; gap:10px;">
+    </div>
+</body>
+</html>

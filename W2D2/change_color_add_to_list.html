@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let array = [];
+
+    function submit() {
+        let action = $("#action").val();
+        let colorMe = $("#colorMe");
+        let ul = $("#list");
+
+        if (action == "smaller") {
+            colorMe.html('<h5>Color Me</h5>');
+        }
+        else if (action.includes("list")) {
+            let html = '';
+            let item = action.split("-")[1];
+
+            if (! array.includes(item)) {
+                array.push(item);
+
+                for (let l of array) {
+                    html += '<li>' + l + '</li>';
+                }
+
+                ul.html(html);
+            }
+        }
+        else {
+            colorMe.html('<h4 style="color:' + action + ';">Color Me</h4>');
+        }
+    }
+</script>
+<body>
+    <div>
+        <label>Input</label>
+        <input style="margin-left:10px;" id="action"/>
+    </div>
+    <div id="colorMe">
+        <h4>Color Me</h4>
+    </div>
+    <button onclick="submit()">Submit</button>
+
+    <ul id="list">
+    </ul>
+</body>
+</html>

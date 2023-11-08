@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let obj = [{ humidity: 20, speed: 30 }, { humidity: 10, speed: 40 }];
+
+    function addForm() {
+        let myDiv = $("#showHere");
+        let options = [];
+        let html = '';
+
+        for (let o of $("#select1 option:selected")) {
+            options.push($(o).val());
+        }
+
+        for(let item of obj) {
+            for (i in item) {
+                if (options.includes(i)) {
+                    html += '<div style="margin-bottom:30px;"><label>' + i + '</label><input value="' + item[i] + '"/></div>';
+                }
+            }
+        }
+
+        myDiv.html(html);
+    }
+</script>
+<body>
+    <div style="display:inline-block">
+        <select id="select1" multiple>
+            <option>speed</option>
+            <option>humidity</option>
+        </select>
+        <button onclick="addForm()">Submit</button>
+    </div>
+
+    <div id="showHere" style="margin-top:30px;"></div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let objs = { tags: ['div', 'label'], text: ['Welcome', 'Some Text'], color: ['blue', 'green'] };
+
+    function addHtml() {
+        let ele = $($("#elementType option:selected")).val();
+        let word = $("#word:checked").val();
+        let cl = $($("#colorElement option:selected")).val();
+        
+        let html = '<' + ele + ' style="color:' + cl + ';">' + word + '</' + ele + '>';
+        let newElement = $(html);
+        $('body').append(newElement);
+    }
+
+    $('document').ready(function() {
+        let selectType = $("#elementType");
+        let selectColor = $("#colorElement");
+        let wordDiv = $('#wordDiv');
+        let typeHtml = '';
+        let colorHtml = '';
+        let wordHtml = '';
+
+        for (let t of objs.tags) {
+            typeHtml += '<option>' + t + '</option>';
+        }
+
+        for (let c of objs.color) {
+            colorHtml += '<option>' + c + '</option>';
+        }
+
+        for (let w of objs.text) {
+            wordHtml += '<input type="radio" id="word" name="word" value="' + w + '" />' + w;
+        } 
+
+        selectType.html(typeHtml);
+        selectColor.html(colorHtml);
+        wordDiv.html(wordHtml);
+    })
+</script>
+<body>
+    <div style="margin-bottom:20px;">
+        <label>Select Tag:</label>
+        <select id="elementType">
+        </select>
+    </div>
+
+    <div style="margin-bottom:20px;">
+        <label>Select Text:</label>
+        <div id="wordDiv" style="display:inline-block">
+        </div>
+    </div>
+
+    <div style="margin-bottom:20px;">
+        <label>Select Color:</label>
+        <select id="colorElement">
+        </select>
+    </div>
+
+    <button onclick="addHtml()">myButton</button>
+</body>
+</html>

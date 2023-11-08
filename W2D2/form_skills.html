@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let objectArray = [{Name:'Ram',Age:30,Skills:['java','javascript']}, {Name:'Shyam',Age:20,Skills:['python','c']}];
+
+    function populate() {
+        let selected = $($("#student option:selected")).val();
+        let obj = objectArray.filter(item => item.Name == selected)[0];
+        let myDiv = $("#showHere");
+        let html = '';
+
+        html += '<div style="margin-bottom:20px;"><label>Age</label><input id="age" value="' + obj.Age + '"/></div>';
+        
+        html += '<div style="margin-bottom:20px;"><label>Skills</label>';
+
+        for (let skill of obj.Skills) {
+            html += '<input type="checkbox" name="skill" id="skill" value="' + skill + '"/>' + skill;
+        }
+
+        html += '</div>';
+
+        myDiv.html(html);
+    }
+
+    function submit() {
+        let myDiv = $("#showHere");
+        let newDiv = $('<div></div>');
+
+        for (let selected of $("#skill:checked")) {
+            if ($(selected).val() == "java") {
+                let html = '<label>Sub Skills</label><select><option>Spring</option><option>Hibernate</option></select>';
+                newDiv.html(html);
+                myDiv.append(newDiv);
+                break;
+            }
+        }
+    }
+
+    $('document').ready(function() {
+        let select = $("#student");
+        let html = '';
+
+        for ( let obj of objectArray) {
+            html += '<option>' + obj.Name + '</option>';
+        }
+
+        select.html(html);
+    })
+</script>
+<body>
+    <div>
+        <label>Select Student</label>
+        <select id="student"></select>
+        <button onclick="populate()">Populate</button>
+    </div>
+    <div id="showHere" style="margin-top:20px;">
+    </div>
+    <button onclick="submit()">Submit</button>
+</body>
+</html>
