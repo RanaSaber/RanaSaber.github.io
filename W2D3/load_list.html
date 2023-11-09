@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<script>
+    let list = ['apple', 'orange', 'pear', 'grapes', 'banana'];
+    let i = 0;
+
+    let interval = setInterval(() => {
+        let l = $('<li>' + list[i] + '</li>');
+        $("#myList").append(l);
+        i++;
+
+        if (i == list.length) {
+            clearInterval(interval);
+        }
+    }, 1000);
+</script>
+<body>
+    <h1>Heading</h1>
+    <p>Some paragraph</p>
+    <ul id="myList"></ul>
+</body>
+</html>

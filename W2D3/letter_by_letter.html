@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<script>
+    let string = ["Welcome to MIU Website.", "Contact us at 2145251.", "For master degrees, contact 31455636"];
+    let currentString = string[0];
+    let j = 0;
+    let i = 0;
+    setInterval(function() {
+        i++;
+        if (i == currentString.length) {
+            j++;
+            currentString = string[j];
+            i = 1;
+        }
+        $("#myDiv").html(currentString.substring(0, i));
+    }, 200);
+
+</script>
+<body>
+    <div id="myDiv"></div>
+</body>
+</html>

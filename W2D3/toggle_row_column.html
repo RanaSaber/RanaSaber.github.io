@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<script>
+    let list = ['apple', 'pear', 'banana'];
+    let print = "row";
+    let start = false;
+    let i = 0;
+    let interval;
+
+    function toggle() {
+        if (start) {
+            start = false;
+        }
+        else {
+            start = true;
+        }
+        if (start) {
+            interval = setInterval(function() {
+                if (print == "row") {
+                    let newDiv = $('<div>' + list[i] + '</div>');
+                    $("#myDiv").append(newDiv);
+                    i++;
+
+                    if (i == list.length) {
+                        i = 0;
+                        print = "column";
+                    }
+                }
+                else {
+                    let newDiv = $('<div style="display:inline; margin-right:5px">' + list[i] + '</div>');
+                    $("#myDiv").append(newDiv);
+                    i++;
+
+                    if (i == list.length) {
+                        i = 0;
+                        print = "row";
+                    }
+                }
+            }, 1000);
+        }
+        else {
+            clearInterval(interval);
+        }
+    }
+</script>
+<body>
+    <h1>Heading</h1>
+    <div>Printing....</div>
+    <div id="myDiv"></div>
+    <button onclick="toggle()">Toggle</button>
+</body>
+</html>
