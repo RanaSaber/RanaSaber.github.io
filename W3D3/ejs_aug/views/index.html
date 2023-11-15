@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css" />
+</head>
+<body>
+    <h2>Choose Language</h2>
+    <form action="/postSkill" method="post">
+        <% for(let key in list) { %>
+            <input type="radio" name="skill" value="<%= key %>" /><%= key %>
+        <% } %>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

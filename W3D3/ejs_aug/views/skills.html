@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Rate Skills</h2>
+    <form action="/postSubskills" method="post">
+        <% for(let key in obj) { %>
+            <label><%= key %></label>
+            <% if (Array.isArray(obj[key])) { %>
+                <select name="<%= key %>">
+                    <% for (let i of obj[key]) { %>
+                        <option><%= i %></option>
+                    <% } %>
+                </select>
+            <% } else { %>
+                <input name="<%= key %>" value="<%= obj[key] %>" />
+            <% } %>
+        <% } %>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

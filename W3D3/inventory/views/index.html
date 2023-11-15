@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css" />
+</head>
+<body>
+    <form action="/addItem" method="post">
+        <label>Name:</label>
+        <input name="name" />
+        <label>Price:</label>
+        <input name="price" />
+        <label>Quantity:</label>
+        <input name="quantity" />
+        <button type="submit">Add</button>
+    </form>
+    <table>
+        <tr>
+            <td><strong>Name</strong></td>
+            <td><strong>Price</strong></td>
+            <td><strong>Quantity</strong></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <% for(let item of list) { %>
+            <tr>
+                <% for(let key in item) { %>
+                    <td><%= item[key] %></td>
+                <% } %>
+                <td><button>Edit</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.css" />
+</head>
+<body>
+    <form action="/postData" method="post">
+        <div>
+            <label>Model</label>
+            <input name="model" value="<%= selectedObj.model %>" />
+        </div>
+
+        <div>
+            <label>Manufacture</label>
+            <% for(let i of obj.manufactures) { %>
+                <% if (i == selectedObj.manufactures) { %>
+                    <input type="radio" name="manufactures" value="<%= i %>" checked /><%= i %>
+                <% } else { %>
+                    <input type="radio" name="manufactures" value="<%= i %>" /><%= i %>
+                <% } %>
+            <% } %>
+        </div>
+
+        <div>
+            <label>Year</label>
+            <select name="years">
+                <% for(let i of obj.years) { %>
+                    <% if (i == selectedObj.years) { %>
+                        <option selected><%= i %></option>
+                    <% } else { %>
+                        <option><%= i %></option>
+                    <% } %>
+                <% } %>
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
