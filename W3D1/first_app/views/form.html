@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<style>
+</style>
+<body>
+    <form action="/data" method="post">
+        <div style="text-align:center; margin-top:50px;">
+            <div style="margin-bottom:10px;">
+                <label style="margin-right: 6px;">First Name</label>
+                <input id="fname" name="fname"/>
+            </div>
+            <div style="margin-bottom:10px;">
+                <label style="margin-right: 10px;">Last Name</label>
+                <input id="lname" name="lname"/>
+            </div>
+            <div style="margin-bottom:10px;">
+                <label>Gender</label>
+                <input type="radio" name="gender" id="gender" value="Male" />Male
+                <input type="radio" name="gender" id="gender" value="Female" />Female
+            </div>
+            <div style="margin-bottom:10px;">
+                <label>Skills</label>
+                <input type="checkbox" name="skills", id="skills" value="Java" />Java
+                <input type="checkbox" name="skills", id="skills" value="Python" />Python
+                <input type="checkbox" name="skills", id="skills" value="Javascript" />Javascript
+            </div>
+            <div style="margin-bottom:10px;">
+                <label>Preferences</label>
+                <select id="preferences" name="preferences">
+                    <option>option1</option>
+                    <option>option2</option>
+                    <option>option3</option>
+                    <option>option4</option>
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
